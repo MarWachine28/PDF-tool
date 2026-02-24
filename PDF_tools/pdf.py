@@ -7,6 +7,15 @@ def process_inventory_document_final(input_pdf, inv_number):
     if not os.path.exists(input_pdf):
         print(f"Error: {input_pdf} not found.")
         return
+    
+
+    # Exist true so it doesnt crash if folder already exists
+    output_folder = inv_number
+    os.makedirs(output_folder, exist_ok=True)
+
+    file_name = f"434-99-9999-588_V01_{inv_number}.pdf"
+    output_path = os.path.join(output_folder, file_name)
+
 
     reader = PdfReader(input_pdf)
     writer = PdfWriter()
@@ -29,7 +38,7 @@ def process_inventory_document_final(input_pdf, inv_number):
         
         can.setFillColorRGB(0, 0, 0) # Black
         can.setFont("Helvetica-Bold", 11)
-        can.drawCentredString(width / 2, height - 25, header_template)
+        can.drawCentredString(width - 465, height - 25, header_template)
 
         # --- PART B: PAGE 1 EDITS ---
         if i == 0:
@@ -56,21 +65,18 @@ def process_inventory_document_final(input_pdf, inv_number):
         new_page.cropbox = box
         writer.add_page(new_page)
 
-    with open(f"434-99-9999-588_V01_{inv_number}.pdf", "wb") as f:
+    with open(output_path, "wb") as f:
         writer.write(f)
     
-    print(f"✅ Process Complete! Header and Page 1 edits applied.")
+    print(f"✅ Process Complete! File saved in folder: {output_path}")
+
 
 # --- RUN ---
-# Input path for the pdf which you want to add header
-# Name the output file
-# Insert the inventory number
+# Input path for the pdf which you want to add header (ONE PDF AT A TIME)
+# Insert the inventory number in the inv_numbers list
 
 input_path = r"D:\VS\Js_And_Py\PDF_tools\434-99-9999-588_V01_Plan_Bericht-Migration der OT Geräte.pdf"
-inv_num = "04313210"
-inv_num1 = "04313220"
-inv_num2 = "04313230"
+inv_nums = ["04313210", "04313220", "04313230"]
 
-process_inventory_document_final(input_path, inv_num)
-process_inventory_document_final(input_path, inv_num1)
-process_inventory_document_final(input_path, inv_num2)
+for num in inv_nums:
+    process_inventory_document_final(input_path, num)
