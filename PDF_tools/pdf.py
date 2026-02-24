@@ -73,6 +73,7 @@ def process_inventory_document_final(input_pdf, inv_number):
 
 # --- RUN ---
 # Input path for the pdf which you want to add header (ONE PDF AT A TIME)
+# Make sure the file path is copied correctly
 # Insert the inventory number in the inv_numbers list
 
 input_path = r"D:\VS\Js_And_Py\PDF_tools\434-99-9999-588_V01_Plan_Bericht-Migration der OT Geräte.pdf"
