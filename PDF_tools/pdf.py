@@ -46,25 +46,25 @@ def process_inventory_document_final(input_pdf, inv_number):
 
         # --- DRAWING ---
         # Header text
-        can.setFillColorRGB(0, 0, 0)
+        can.setFillColorRGB(0, 0.388, 0.694)
 
 
         # Page 1 specific edits 
         if i == 0:
 
-            can.setFont("Helvetica-Bold", 11)
+            can.setFont("Helvetica", 15)
             can.drawCentredString(c_top - 465, c_width - 25, header_template) # ADJUST if Header not placed correctly on front page
 
-            can.setFont("Helvetica", 12)
+            can.setFont("Helvetica", 15)
             can.drawString(330, 620, inv_number) #ADJUST x, y to place above the line
             can.setFont("Helvetica-Bold", 12)
-            can.drawString(242, 576, "x")  #ADJUST x, y to fit the check box of choice
+            can.drawString(242, 575, "x")  #ADJUST x, y to fit the check box of choice
         else:
             # Header for pages 2-12
             can.setFillColorRGB(1, 1, 1) 
             can.rect(c_left, c_top - 40, c_width, 40, fill=1, stroke=0)
-            can.setFillColorRGB(0, 0, 0)
-            can.setFont("Helvetica-Bold", 11)
+            can.setFillColorRGB(0, 0.388, 0.694)
+            can.setFont("Helvetica", 15)
             can.drawCentredString(c_width - 465, c_top - 25, header_template)
 
         can.save()
