@@ -158,8 +158,8 @@ projectLabel.grid(row=0, column=1)
 articleLabel = tkinter.Label(name_frame, text="Article Name")
 articleLabel.grid(row=3, column=0, columnspan=8,  pady=(10, 0))
 
-name_entry = tkinter.Entry(name_frame)
-project_entry = tkinter.Entry(name_frame)
+name_entry = ttk.Combobox(name_frame, values=["", "Sanjay Palad", "Tahir Palad"])
+project_entry = ttk.Combobox(name_frame, values=["", "26003_CELOP26"])
 name_entry.grid(row=1, column=0, padx=(10, 0))
 project_entry.grid(row=1, column=1)
 article_combobox = ttk.Combobox(name_frame, values=["", "ENG_Process Engineer - Sanjay Palad - Onsite", "ENG_Process Engineer - Sanjay Palad - Remote"])
@@ -171,18 +171,18 @@ user_info_frame.grid(row=2, column=0, sticky="ew", padx=20, pady=10)
 
 # Start
 tkinter.Label(user_info_frame, text="Start:").grid(row=0, column=0)
-start_hh = tkinter.Entry(user_info_frame, width=3)
+start_hh = tkinter.Spinbox(user_info_frame, from_=0, to=24, increment=1, format="%02.0f", width=3)
 start_hh.grid(row=0, column=1)
 tkinter.Label(user_info_frame, text=":").grid(row=0, column=2)
-start_mm = tkinter.Entry(user_info_frame, width=3)
+start_mm = tkinter.Spinbox(user_info_frame, values=[0, 15, 30, 45], wrap=True, format="%02.0f", width=3)
 start_mm.grid(row=0, column=3)
 
 # End
 tkinter.Label(user_info_frame, text="End:").grid(row=0, column=4, padx=(50, 0))
-end_hh = tkinter.Entry(user_info_frame, width=3)
+end_hh = tkinter.Spinbox(user_info_frame, from_=0, to=24, increment=1, format="%02.0f", width=3)
 end_hh.grid(row=0, column=5)
 tkinter.Label(user_info_frame, text=":").grid(row=0, column=6)
-end_mm = tkinter.Entry(user_info_frame, width=3)
+end_mm = tkinter.Spinbox(user_info_frame, values=[0, 15, 30, 45], wrap=True, format="%02.0f", width=3)
 end_mm.grid(row=0, column=7)
 
 tkinter.Label(user_info_frame, text="Break time:").grid(row=1, column=0, pady=(10, 0))
